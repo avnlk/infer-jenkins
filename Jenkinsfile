@@ -18,7 +18,7 @@ pipeline {
             }
         }
     }
-    post { 
+    post {  
         always {
             archiveArtifacts artifacts: 'infer-out/report.json', fingerprint: true
 	    recordIssues(
