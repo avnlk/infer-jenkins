@@ -19,4 +19,4 @@ pipeline {
             archiveArtifacts artifacts: 'infer-out/report.json', fingerprint: true
         }
     }
-}
+}  
