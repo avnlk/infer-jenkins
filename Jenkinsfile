@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('Infer Analysis') {
             steps {
@@ -13,10 +12,12 @@ pipeline {
             }
         }
     }
-
     post {
         always {
             archiveArtifacts artifacts: 'infer-out/report.json', fingerprint: true
+            recordIssues(
+                tools: [issues(pattern: 'infer-out/report.json', name: 'Infer')]
+            )
         }
     }
-}  
+}
