@@ -16,9 +16,7 @@ pipeline {
 
     post {
         always {
-            recordIssues(
-                tools: [infer(pattern: 'infer-out/report.json')]
-            )
+            archiveArtifacts artifacts: 'infer-out/report.json', fingerprint: true
         }
     }
 }
