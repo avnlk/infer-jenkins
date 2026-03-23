@@ -21,9 +21,9 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'infer-out/report.json', fingerprint: true
-            recordIssues(
-                tools: [gcc(pattern: 'infer-out/report.txt', name: 'Infer')]
-            )
+	    recordIssues(
+ 	    	tools: [gcc(pattern: 'infer-report.txt', name: 'Infer')]
+	    )
         }
     }
 }
