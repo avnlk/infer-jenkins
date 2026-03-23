@@ -11,12 +11,27 @@ pipeline {
                 '''
             }
         }
+
+        stage('Convert Report') {
+            steps {
+                sh '''
+                    python3 -c "
+import json
+with open('infer-out/report.json') as f:
+    issues = json.load(f)
+with open('infer-out/report.txt', 'w') as out:
+    for i in issues:
+        out.write(f\"{i['file']}:{i['line']}: warning: [{i['bug_type']}] {i['qualifier']}\\n\")
+"
+                '''
+            }
+        }
     }
     post {
         always {
             archiveArtifacts artifacts: 'infer-out/report.json', fingerprint: true
             recordIssues(
-                tools: [issues(pattern: 'infer-out/report.json', name: 'Infer')]
+                tools: [gcc(pattern: 'infer-out/report.txt', name: 'Infer')]
             )
         }
     }
