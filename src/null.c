@@ -2,6 +2,6 @@
 
 int main() {
     int *p = malloc(sizeof(int));
-    free(p);
+    // free(p);
     return *p; // use-after-free
 }
