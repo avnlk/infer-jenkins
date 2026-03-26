@@ -5,6 +5,7 @@ void read_file() {
     if (!f) return;
     // forgot to fclose(f) — resource leak
     int x = fgetc(f);
+    fclose(f);
 }
 
 int main() {
