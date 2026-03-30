@@ -14,4 +14,4 @@ with open(output_path, 'w') as out:
 print("Written to:", output_path)
 print("Issues written:", len(issues))
 
-
+  
