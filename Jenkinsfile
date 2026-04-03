@@ -8,7 +8,7 @@ pipeline {
                     docker run --rm \
                         -v $(pwd):/work \
                         -w /work \
-                        infer infer run --biabduction -- gcc src/leak.c src/null.c
+                        infer infer run --biabduction -- gcc src/leak.c src/null.c src/uaf.c src/complexleak.c
                     cp infer-out/report.json infer-out-c-report.json
                 '''
             }

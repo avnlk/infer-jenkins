@@ -1,0 +1,7 @@
+infer-out/
+src/infer-out/
+*.class
+infer-report.txt
+infer-out-c-report.json
+infer-out-java-report.json
+.scannerwork/
