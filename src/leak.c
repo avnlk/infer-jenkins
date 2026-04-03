@@ -3,7 +3,6 @@
 void read_file() {
     FILE *f = fopen("data.txt", "r");
     if (!f) return;
-    // forgot to fclose(f) — resource leak
     int x = fgetc(f);
     fclose(f);
 }
