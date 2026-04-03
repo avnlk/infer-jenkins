@@ -8,8 +8,14 @@ pipeline {
                     docker run --rm \
                         -v $(pwd):/work \
                         -w /work \
-                        infer infer run --biabduction -- gcc src/leak.c src/null.c src/uaf.c src/complexleak.c
+                        infer infer run --biabduction -- gcc src/leak.c src/null.c src/complexleak.c
                     cp infer-out/report.json infer-out-c-report.json
+
+                    docker run --rm \
+                        -v $(pwd):/work \
+                        -w /work \
+                        infer infer run -- gcc src/uaf.c
+                    cp infer-out/report.json infer-out-uaf-report.json
                 '''
             }
         }
@@ -33,7 +39,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'infer-out-c-report.json, infer-out-java-report.json', fingerprint: true
+            archiveArtifacts artifacts: 'infer-out-c-report.json, infer-out-uaf-report.json, infer-out-java-report.json', fingerprint: true
             recordIssues(
                 tools: [gcc(pattern: 'infer-report.txt', name: 'Infer')]
             )

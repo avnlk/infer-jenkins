@@ -5,7 +5,7 @@ print("Working directory:", os.getcwd())
 
 issues = []
 
-for report_file in ['infer-out-c-report.json', 'infer-out-java-report.json']:
+for report_file in ['infer-out-c-report.json', 'infer-out-uaf-report.json', 'infer-out-java-report.json']:
     if os.path.exists(report_file):
         with open(report_file) as f:
             issues.extend(json.load(f))
