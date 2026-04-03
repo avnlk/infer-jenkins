@@ -25,7 +25,7 @@ pipeline {
                     docker run --rm \
                         -v $(pwd):/work \
                         -w /work \
-                        infer infer run -- javac src/NullBug.java src/IntraNull.java src/InterNull.java src/OrderProcessor.java
+                        infer infer run -- javac src/NullBug.java src/IntraNull.java src/InterNull.java src/OrderProcessor.java src/ResourceLeak.java
                     cp infer-out/report.json infer-out-java-report.json
                 '''
             }
