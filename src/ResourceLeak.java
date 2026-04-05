@@ -2,11 +2,11 @@ import java.io.*;
 
 public class ResourceLeak {
     public static void process(boolean condition) throws Exception {
-        FileReader f = new FileReader("data.txt");
+        InputStream is = Runtime.getRuntime().exec("ls").getInputStream();
         if (condition) {
-            return;  // leak - FileReader never closed on this path
+            return;  // leak - InputStream never closed on this path
         }
-        f.close();
+        is.close();
     }
 
     public static void main(String[] args) throws Exception {

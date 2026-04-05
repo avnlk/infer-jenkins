@@ -4,4 +4,5 @@ src/infer-out/
 infer-report.txt
 infer-out-c-report.json
 infer-out-java-report.json
+infer-out-uaf-report.json
 .scannerwork/
