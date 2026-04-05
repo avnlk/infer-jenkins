@@ -6,3 +6,4 @@ infer-out-c-report.json
 infer-out-java-report.json
 infer-out-uaf-report.json
 .scannerwork/
+infer-out-costs-report.json
