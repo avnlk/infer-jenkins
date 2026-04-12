@@ -6,7 +6,7 @@ public class NullBug {
 
     public void run() {
         String result = getUpper(null);
-        System.out.println(result.length()); // null deref here
+        System.out.println(result.length());
     }
 
     public static void main(String[] args) {
